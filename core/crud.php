@@ -31,7 +31,7 @@ class Crud extends Conexion
             $mensaje->getMessage();
         }
     }
-
+ ##
     public function eliminar(int $id)
     {
         try {
