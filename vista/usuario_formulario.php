@@ -4,36 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>formulario</title>
+    <title>Formulario</title>
 </head>
 
 <body>
 
-    <div style="display:none;">
-        <label for="id">id</label>
-        <input type="text" name="id" value="">
-    </div>
+    <form action="index.php?controlador=usuario&accion=guardar" method="post">
+        <div style="display:none;">
+            <label for="id">id</label>
+            <input type="hidden" name="id" value="<?php echo $usuario->id?>">
+        </div>
 
-    <div>
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" value="">
-    </div>
-    <div>
-        <label for="apellido">Apellido</label>
-        <input type="text" name="apellido" value="">
-    </div>
-    <div>
-        <label for="usuario">Usuario</label>
-        <input type="text" name="usuario" value="">
-    </div>
-    <div>
-        <label for="clave">Clave</label>
-        <input type="password" name="clave" value="">
-    </div>
-    <div>
-        <input type="submit" name="enviar" value="Enviar">
-    </div>
-
+        <div>
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" value="<?php echo $usuario->nombre?>">
+        </div>
+        <div>
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" value="<?php echo $usuario->apellido?>">
+        </div>
+        <div>
+            <label for="usuario">Usuario</label>
+            <input type="text" name="usuario" value="<?php echo $usuario->usuario?>">
+        </div>
+        
+        <div>
+            <label for="clave">Clave</label>
+            <input type="text" name="clave" value="<?php echo $usuario->clave?>">
+        </div>
+        <div>
+            <input type="submit" name="enviar" value="Enviar">
+        </div>
+    </form>
 
 </body>
 

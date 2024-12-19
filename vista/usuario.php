@@ -9,14 +9,26 @@
 </head>
 
 <body>
-    <div  class="d-flex justify-content-around w-100">
-    <?php require_once("../core/constantes.php");
-    foreach (usuarioCol as $value): ?>
-        <div><?php echo $value; ?></div>
-    <?php endforeach; ?>
-    </divcñ>
+    <div class="d-flex justify-content-around w-100">
+        <?php require_once("core/constantes.php");
+        foreach (usuarioCol as $value): ?>
+            <div><?php echo $value; ?></div>
+        <?php endforeach; ?>
+    </div>
 
-
+    <div class="d-flex justify-content-around w-100 flex-wrap">
+        <?php foreach ($this->consultaUsuarios() as $usuario) : ?>
+            <div class="d-flex justify-content-around w-100">
+                <p><?php echo $usuario->id ?></p>
+                <p><?php echo $usuario->nombre ?></p>
+                <p><?php echo $usuario->apellido ?></p>
+                <p><?php echo $usuario->usuario ?></p>
+                <p><?php echo $usuario->clave ?></p>
+                <a href="index.php?controlador=usuario&accion=mostrarUsuario&id=<?php echo $usuario->id ?>">Editar</a>
+                <a href="index.php?controlador=usuario&accion=eliminarUser&id=<?php echo $usuario->id ?>">Eliminar</a>
+            </div>
+        <?php endforeach; ?>
+    </div>
 
 
 

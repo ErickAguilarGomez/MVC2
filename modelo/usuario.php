@@ -23,8 +23,8 @@ class Usuario extends Crud
         $this->updateUser("id=?,nombre=?,apellido=?,usuario=?,clave=?",  [$this->id, $this->nombre, $this->apellido, $this->usuario, $this->clave]);
     }
 
-    public function remover() {
-        $this->eliminar($this->id);
+    public function remover($id) {
+        $this->eliminar(id: $id);
     }
 
 

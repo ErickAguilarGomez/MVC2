@@ -1,12 +1,16 @@
 <?php
 require_once("modelo/usuario.php");
 
-$usuarios = new Usuario(
-    id: 5,
-    nombre: "carlos",
-    apellido: "carlos",
-    usuario: "mendoza",
-    clave: "mendoza"
-);
+if (!isset($_REQUEST["controlador"])) {
+    require_once("controlador/usuario_controlador.php");
+    $controlador=new UsuarioControlador();
+    $controlador->indexUsuario();
+} else {
 
-var_dump($usuarios->consultaUsuario(5));
+    $controlador = $_REQUEST["controlador"];
+    $accion = $_REQUEST["accion"];
+    require_once("controlador/$controlador" . "_controlador.php");
+    $controlador = ucwords($controlador) . "controlador";
+    $controlador = new $controlador;
+    call_user_func([$controlador, $accion]);
+}
