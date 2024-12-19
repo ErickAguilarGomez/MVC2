@@ -31,7 +31,7 @@ class Crud extends Conexion
             $mensaje->getMessage();
         }
     }
- ##
+    ##
     public function eliminar(int $id)
     {
         try {
@@ -48,19 +48,34 @@ class Crud extends Conexion
         }
     }
 
-    public function crearUsuario($columnas,$marcadores,$datos){
-        try{
-            $stm = $this->pdo->prepare("SELECT * FROM {$this->tabla} WHERE correo=?");
-            $stm->execute([$_REQUEST["correo"]]);
+    public function crearUsuario($columnas, $marcadores, $datos)
+    {
+        try {
+            $stm = $this->pdo->prepare("SELECT * FROM $this->tabla WHERE usuario = ?");
+            $stm->execute([$datos[3]]);
             $user = $stm->fetch(PDO::FETCH_OBJ);
-            if (!isset($user)) {
-                $create=$this->pdo->prepare("INSERT INTO {$this->tabla} {$columnas} VALUES ($marcadores)");
-                $create->execute([$datos]);
+
+            if (!$user) {
+                $create = $this->pdo->prepare("INSERT INTO $this->tabla ($columnas) VALUES ($marcadores)");
+                $create->execute($datos);
+                echo "Usuario insertado exitosamente";
+            } else {
+                echo "El usuario ya existe";
             }
-            
-        }catch( PDOException $mensaje) {
-            $mensaje->getMessage(); 
+        } catch (PDOException $e) {
+            echo "Error al insertar el usuario: " . $e->getMessage();
         }
     }
 
+    public function updateUser(string $columnas, array $datos)
+    {
+        try {
+            $stm = $this->pdo->prepare("UPDATE $this->tabla SET $columnas  WHERE id=$datos[0]");
+            $stm->execute($datos);
+            echo "Usuario $datos[1] actualizado correctamente";
+        } catch (PDOException $mensaje) {
+            $error = $mensaje->getMessage();
+            echo $error;
+        }
+    }
 }
