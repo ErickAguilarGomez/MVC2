@@ -4,7 +4,7 @@ require_once("core/crud.php");
 class Usuario extends Crud
 {
     public function __construct(
-        public int $id,
+        public int $id=0,
         public string $nombre = "",
         public string $apellido = "",
         public string $usuario = "",
