@@ -9,6 +9,9 @@
 </head>
 
 <body>
+
+    <a href="index.php?controlador=usuario&accion=mostrarUsuario">agregar</a>
+
     <div class="d-flex justify-content-around w-100">
         <?php require_once("core/constantes.php");
         foreach (usuarioCol as $value): ?>

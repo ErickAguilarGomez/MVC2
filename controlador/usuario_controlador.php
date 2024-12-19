@@ -11,9 +11,10 @@ class UsuarioControlador extends Usuario{
     }
 
     public function mostrarUsuario(){
-        $id=$_REQUEST["id"];
-        if(isset($id)){
-            $usuario=$this->consultaUsuario($id);
+        if(isset($_REQUEST["id"])){
+            $usuario=$this->consultaUsuario($_REQUEST["id"]);
+        }else{
+            $usuario=$this;
         }
         require_once("vista/usuario_formulario.php");
     }
