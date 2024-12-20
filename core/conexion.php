@@ -9,7 +9,7 @@ class Conexion
         public string $username = "root",
         public string $password = ""
     ) {}
-
+##
     protected function conectar()
     {
         try {
